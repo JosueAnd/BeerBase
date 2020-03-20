@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">BeerRecycler</string>
+    <string name="action_settings">Settings</string>
+    <string name="picture_of_beer">Picture of beer</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+
+    <string-array name="beers">
+        <item>Blue Moon</item>
+        <item>Corona</item>
+        <item>Modelo</item>
+        <item>Corona Extra</item>
+        <item>Angry Orchard</item>
+        <item>Wine</item>
+        <item>Cherrylicious</item>
+        <item>Blue Moon</item>
+        <item>Corona</item>
+        <item>Modelo</item>
+        <item>Corona Extra</item>
+        <item>Angry Orchard</item>
+        <item>Wine</item>
+        <item>Cherrylicious</item>
+        <item>Blue Moon</item>
+        <item>Corona</item>
+        <item>Modelo</item>
+        <item>Corona Extra</item>
+        <item>Angry Orchard</item>
+        <item>Wine</item>
+        <item>Cherrylicious</item>
+    </string-array>
+
+    <string-array name="description">
+        <item>Amazing</item>
+        <item>Piss</item>
+        <item>Pissiest</item>
+        <item>Piss Again</item>
+        <item>Decent Cider</item>
+        <item>The Best</item>
+        <item>Idk I made it up</item>
+        <item>Amazing</item>
+        <item>Piss</item>
+        <item>Pissiest</item>
+        <item>Piss Again</item>
+        <item>Decent Cider</item>
+        <item>The Best</item>
+        <item>Idk I made it up</item>
+        <item>Amazing</item>
+        <item>Piss</item>
+        <item>Pissiest</item>
+        <item>Piss Again</item>
+        <item>Decent Cider</item>
+        <item>The Best</item>
+        <item>Idk I made it up</item>
+    </string-array>
+</resources>
