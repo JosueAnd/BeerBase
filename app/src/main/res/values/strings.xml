@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">BeerRecycler</string>
+    <string name="app_name">BeerBase</string>
     <string name="action_settings">Settings</string>
-    <string name="picture_of_beer">Picture of beer</string>
+    <string name="picture_of_beer">Picture of Beer</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
+    <string name="detail_view">Beer Details</string>
 
     <string-array name="beers">
         <item>Blue Moon</item>
@@ -13,20 +14,20 @@
         <item>Angry Orchard</item>
         <item>Wine</item>
         <item>Cherrylicious</item>
-        <item>Blue Moon</item>
-        <item>Corona</item>
-        <item>Modelo</item>
-        <item>Corona Extra</item>
-        <item>Angry Orchard</item>
-        <item>Wine</item>
-        <item>Cherrylicious</item>
-        <item>Blue Moon</item>
-        <item>Corona</item>
-        <item>Modelo</item>
-        <item>Corona Extra</item>
-        <item>Angry Orchard</item>
-        <item>Wine</item>
-        <item>Cherrylicious</item>
+        <item>1Blue Moon</item>
+        <item>1Corona</item>
+        <item>1Modelo</item>
+        <item>1Corona Extra</item>
+        <item>1Angry Orchard</item>
+        <item>1Wine</item>
+        <item>1Cherrylicious</item>
+        <item>2Blue Moon</item>
+        <item>2Corona</item>
+        <item>2Modelo</item>
+        <item>2Corona Extra</item>
+        <item>2Angry Orchard</item>
+        <item>2Wine</item>
+        <item>2Cherrylicious</item>
     </string-array>
 
     <string-array name="description">
@@ -37,19 +38,19 @@
         <item>Decent Cider</item>
         <item>The Best</item>
         <item>Idk I made it up</item>
-        <item>Amazing</item>
-        <item>Piss</item>
-        <item>Pissiest</item>
-        <item>Piss Again</item>
-        <item>Decent Cider</item>
-        <item>The Best</item>
-        <item>Idk I made it up</item>
-        <item>Amazing</item>
-        <item>Piss</item>
-        <item>Pissiest</item>
-        <item>Piss Again</item>
-        <item>Decent Cider</item>
-        <item>The Best</item>
-        <item>Idk I made it up</item>
+        <item>1Amazing</item>
+        <item>1Piss</item>
+        <item>1Pissiest</item>
+        <item>1Piss Again</item>
+        <item>1Decent Cider</item>
+        <item>1The Best</item>
+        <item>1Idk I made it up</item>
+        <item>2Amazing</item>
+        <item>2Piss</item>
+        <item>2Pissiest</item>
+        <item>2Piss Again</item>
+        <item>2Decent Cider</item>
+        <item>2The Best</item>
+        <item>2Idk I made it up</item>
     </string-array>
 </resources>
