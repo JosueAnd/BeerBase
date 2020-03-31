@@ -17,4 +17,8 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="BeerSplash" parent="AppTheme.NoActionBar">
+        <item name="android:windowBackground">@drawable/background_beer_splash</item>
+    </style>
+
 </resources>
