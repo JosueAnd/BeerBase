@@ -12,17 +12,23 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     String[] data1, data2;
     int[] images;
-    Context context;
 
-    public MyAdapter(Context context, String[] s1, String[] s2, int[] images) {
+    Context context;
+    List<Beer> beers;
+
+    public MyAdapter(Context context, List<Beer> beers) {
         this.context = context;
-        this.data1 = s1;
-        this.data2 = s2;
-        this.images = images;
+        this.beers = beers;
+
+//        this.data1 = s1;
+//        this.data2 = s2;
+//        this.images = images;
     }
 
     @NonNull
@@ -35,17 +41,31 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-        holder.title.setText(this.data1[position]);
-        holder.description.setText(this.data2[position]);
-        holder.myImage.setImageResource(this.images[position]);
+//        holder.title.setText(this.data1[position]);
+//        holder.description.setText(this.data2[position]);
+//        holder.myImage.setImageResource(this.images[position]);
+//
+//        holder.rowLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(context, SecondActivity.class);
+//                intent.putExtra("title", data1[position]);
+//                intent.putExtra("description", data2[position]);
+//                intent.putExtra("image", images[position]);
+//                context.startActivity(intent);
+//            }
+//        });
+        holder.title.setText(beers.get(position).getName());
+        holder.description.setText(beers.get(position).getDescription());
+        holder.myImage.setImageResource(beers.get(position).getImage());
 
         holder.rowLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, SecondActivity.class);
-                intent.putExtra("title", data1[position]);
-                intent.putExtra("description", data2[position]);
-                intent.putExtra("image", images[position]);
+                intent.putExtra("title", beers.get(position).getName());
+                intent.putExtra("description", beers.get(position).getDescription());
+                intent.putExtra("image", beers.get(position).getImage());
                 context.startActivity(intent);
             }
         });
@@ -53,7 +73,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public int getItemCount() {
-        return this.images.length;
+        return this.beers.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

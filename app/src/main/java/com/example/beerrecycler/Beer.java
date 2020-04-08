@@ -1,110 +1,139 @@
 package com.example.beerrecycler;
 
+import android.database.Cursor;
+
 public class Beer {
 
     // Class Variables
-    private String  name,
-                    brewery,
-                    flavor,
-                    style,
-                    taste,
-                    garnish,
-                    foodPair;
-    private int     image;
+    private String      name,
+                        brewery,
+                        category,
+                        style,
+                        description;
+    private int         id,
+                        image               = 0;
+    private double      abv;
+    private final int   COLUMN_ID           = 0,
+                        COLUMN_BREWERY      = 1,
+                        COLUMN_NAME         = 2,
+                        COLUMN_CATEGORY     = 3,
+                        COLUMN_STYLE        = 4,
+                        COLUMN_ABV          = 5,
+                        COLUMN_DESCRIPTION  = 6,
+                        COLUMN_IMAGE        = 7;
 
-    public Beer(
-            String name,
-            String brewery,
-            String flavor,
-            String style,
-            String taste,
-            String garnish,
-            String foodPair,
-            int image
-    ) {
-        setName(name);
-        setBrewery(brewery);
-        setFlavor(flavor);
-        setStyle(style);
-        setTaste(taste);
-        setGarnish(garnish);
-        setFoodPair(foodPair);
-        setImage(image);
+    // Static Variables
+    private static int  idCounter           = 0;
+
+    Beer(Cursor beer) {
+        setId(beer.getInt(COLUMN_ID));
+        setName(beer.getString(COLUMN_NAME));
+        setBrewery(beer.getString(COLUMN_BREWERY));
+        setCategory(beer.getString(COLUMN_CATEGORY));
+        setStyle(beer.getString(COLUMN_STYLE));
+        setAbv(beer.getDouble(COLUMN_ABV));
+        setDescription(!beer.getString(COLUMN_DESCRIPTION).equals("NULL") ?
+                beer.getString(COLUMN_DESCRIPTION) : "No description available.");
+        setImage(beer.getInt(COLUMN_IMAGE));
     } // end public constructor
 
     public String getName() {
         return name;
-    } // end getName
+    }
 
-    public void setName(String name) { this.name = name; } // end setName
+    private void setName(String name) {
+        if(name == null || name.equals(""))
+            this.name = "Name Not Available";
+        else
+            this.name = name;
+    }
 
     public String getBrewery() {
         return brewery;
-    } // end getBrewery
+    }
 
-    public void setBrewery(String brewery) {
-        this.brewery = brewery;
-    } // end setBrewery
+    private void setBrewery(String brewery) {
+        if(brewery == null || brewery.equals(""))
+            this.brewery = "Brewery Not Available";
+        else
+            this.brewery = brewery;
+    }
 
-    public String getFlavor() {
-        return flavor;
-    } // end getFlavor
+    public String getCategory() {
+        return category;
+    }
 
-    public void setFlavor(String flavor) {
-        this.flavor = flavor;
-    } // end setFlavor
+    private void setCategory(String category) {
+        if(category == null || category.equals(""))
+            this.category = "Category Not Available";
+        else
+            this.category = category;
+    }
 
     public String getStyle() {
         return style;
-    } // end getStyle
+    }
 
-    public void setStyle(String style) {
-        this.style = style;
-    } // end setStyle
+    private void setStyle(String style) {
+        if(style == null || style.equals(""))
+            this.style = "Style Not Available";
+        else
+            this.style = style;
+    }
 
-    public String getTaste() {
-        return taste;
-    } // end getTaste
+    public String getDescription() {
+        return description;
+    }
 
-    public void setTaste(String taste) {
-        this.taste = taste;
-    } // end setTaste
+    private void setDescription(String description) {
+        if(description == null || description.equals(""))
+            this.description = "Description Not Available";
+        else
+            this.description = description;
+    }
 
-    public String getGarnish() {
-        return garnish;
-    } // end getGarnish
+    public int getId() {
+        return id;
+    }
 
-    public void setGarnish(String garnish) {
-        this.garnish = garnish;
-    } // end setGarnish
+    private void setId(int id) {
+        if(id == 0) {
+            idCounter += 1;
+            this.id = idCounter;
+        } else {
+            this.id = id;
+            idCounter = id;
+        }
+    }
 
-    public String getFoodPair() {
-        return foodPair;
-    } // end getFoodPair
+    public double getAbv() {
+        return abv;
+    }
 
-    public void setFoodPair(String foodPair) {
-        this.foodPair = foodPair;
-    } // end setFoodPair
+    private void setAbv(double abv) {
+        this.abv = abv;
+    }
 
     public int getImage() {
         return image;
-    } // end getImage
+    }
 
-    public void setImage(int image) {
+    private void setImage(int image) {
         this.image = image;
-    } // end setImage
+    }
 
     @Override
     public String toString() {
         return "Beer{" +
                 "name='" + name + '\'' +
                 ", brewery='" + brewery + '\'' +
-                ", flavor='" + flavor + '\'' +
+                ", category='" + category + '\'' +
                 ", style='" + style + '\'' +
-                ", taste='" + taste + '\'' +
-                ", garnish='" + garnish + '\'' +
-                ", foodPair='" + foodPair + '\'' +
+                ", description='" + description + '\'' +
+                ", id=" + id +
+                ", abv=" + abv +
                 ", image=" + image +
                 '}';
-    } // end toString
+    }
+
 } // end class Beer
