@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">BeerBase</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
     <string name="picture_of_beer">Picture of Beer</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
