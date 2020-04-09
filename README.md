@@ -1,3 +1,3 @@
-# ![Image](https://github.com/JosueAnd/BeerBase/blob/master/app/src/main/res/drawable/beer_icon2.png) BeerBase
+# ![Image](https://www.dropbox.com/preview/beer_icon.png) BeerBase
 A Beer Database application for the Android platform.
 
