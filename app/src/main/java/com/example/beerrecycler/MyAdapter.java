@@ -2,6 +2,8 @@ package com.example.beerrecycler;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,14 +23,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     Context context;
     List<Beer> beers;
+    byte[] currentImg = null;
+    Bitmap imgBitmap = null;
 
-    public MyAdapter(Context context, List<Beer> beers) {
+    MyAdapter(Context context, List<Beer> beers) {
         this.context = context;
         this.beers = beers;
-
-//        this.data1 = s1;
-//        this.data2 = s2;
-//        this.images = images;
     }
 
     @NonNull
@@ -41,23 +41,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-//        holder.title.setText(this.data1[position]);
-//        holder.description.setText(this.data2[position]);
-//        holder.myImage.setImageResource(this.images[position]);
-//
-//        holder.rowLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(context, SecondActivity.class);
-//                intent.putExtra("title", data1[position]);
-//                intent.putExtra("description", data2[position]);
-//                intent.putExtra("image", images[position]);
-//                context.startActivity(intent);
-//            }
-//        });
+        currentImg = beers.get(position).getImage();
+        if(currentImg != null) {
+            imgBitmap = BitmapFactory.decodeByteArray(currentImg, 0, currentImg.length);
+        }
+
         holder.title.setText(beers.get(position).getName());
-        holder.description.setText(beers.get(position).getDescription());
-        holder.myImage.setImageResource(beers.get(position).getImage());
+        if(imgBitmap != null) {
+            holder.myImage.setImageBitmap(imgBitmap);
+        } else {
+            holder.myImage.setImageResource(R.drawable.beer_icon2);
+        }
 
         holder.rowLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +59,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 Intent intent = new Intent(context, SecondActivity.class);
                 intent.putExtra("title", beers.get(position).getName());
                 intent.putExtra("description", beers.get(position).getDescription());
-                intent.putExtra("image", beers.get(position).getImage());
+                if(currentImg != null) {
+                    intent.putExtra("image", beers.get(position).getImage());
+                } else {
+                    intent.putExtra("image", R.drawable.beer_icon2);
+                }
                 context.startActivity(intent);
             }
         });
@@ -78,14 +76,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView title, description;
+        TextView title;
         ImageView myImage;
         ConstraintLayout rowLayout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             this.title = itemView.findViewById(R.id.beerText);
-            this.description = itemView.findViewById(R.id.descriptionText);
             this.myImage = itemView.findViewById(R.id.myImageView);
             this.rowLayout = itemView.findViewById(R.id.rowLayout);
         }

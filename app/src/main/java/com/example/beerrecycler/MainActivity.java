@@ -2,6 +2,7 @@ package com.example.beerrecycler;
 
 import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     final String    DATABASE        = "/data/data/com.example.beerrecycler/databases/beers",
                     allDataQuery    = "SELECT * FROM beers";
+    SQLiteDatabase  database;
     Cursor          queryResults;
     List<Beer>      original        = new ArrayList<>();
 //    String[]        s1,
@@ -57,24 +59,31 @@ public class MainActivity extends AppCompatActivity {
 
         mainRecycler = findViewById(R.id.mainRecycler);
 
-        queryResults = BeerBase.getData(
-                BeerBase.openDatabase(DATABASE),
-                allDataQuery
-        );
-        try {
+        database = BeerBase.openDatabase(DATABASE);
 
-            queryResults.moveToFirst();
+//        if(database != null) {
+            queryResults = BeerBase.getData(
+                    database,
+                    allDataQuery
+            );
+            try {
 
-            do {
-                original.add(new Beer(queryResults));
-            } while(queryResults.moveToNext());
+                queryResults.moveToFirst();
 
-        } catch(CursorIndexOutOfBoundsException exception) {
+                do {
+                    original.add(new Beer(queryResults));
+                } while (queryResults.moveToNext());
 
-            exception.printStackTrace();
-            System.out.println(exception.getMessage());
 
-        }
+            } catch (CursorIndexOutOfBoundsException exception) {
+
+                exception.printStackTrace();
+                System.out.println(exception.getMessage());
+
+            } finally {
+                BeerBase.closeDatabase(database);
+            }
+//        }
 
 //        s1 = getResources().getStringArray(R.array.beers);
 //        s2 = getResources().getStringArray(R.array.description);

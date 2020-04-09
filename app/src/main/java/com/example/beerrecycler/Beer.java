@@ -10,8 +10,8 @@ public class Beer {
                         category,
                         style,
                         description;
-    private int         id,
-                        image               = 0;
+    private int         id;
+    private byte[]      image;
     private double      abv;
     private final int   COLUMN_ID           = 0,
                         COLUMN_BREWERY      = 1,
@@ -32,9 +32,9 @@ public class Beer {
         setCategory(beer.getString(COLUMN_CATEGORY));
         setStyle(beer.getString(COLUMN_STYLE));
         setAbv(beer.getDouble(COLUMN_ABV));
-        setDescription(!beer.getString(COLUMN_DESCRIPTION).equals("NULL") ?
+        setDescription(!(beer.getString(COLUMN_DESCRIPTION) == null) ?
                 beer.getString(COLUMN_DESCRIPTION) : "No description available.");
-        setImage(beer.getInt(COLUMN_IMAGE));
+        setImage(beer.getBlob(COLUMN_IMAGE));
     } // end public constructor
 
     public String getName() {
@@ -114,11 +114,11 @@ public class Beer {
         this.abv = abv;
     }
 
-    public int getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    private void setImage(int image) {
+    private void setImage(byte[] image) {
         this.image = image;
     }
 

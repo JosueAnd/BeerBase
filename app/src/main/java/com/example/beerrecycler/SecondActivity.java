@@ -1,5 +1,6 @@
 package com.example.beerrecycler;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,7 +15,7 @@ public class SecondActivity extends AppCompatActivity {
     ImageView saIVimg;
 
     String saTitle, saDesc, label;
-    int saImg;
+    byte[] saImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +40,8 @@ public class SecondActivity extends AppCompatActivity {
                 getIntent().hasExtra("image")
         ) {
             saTitle = getIntent().getStringExtra("title");
-            saDesc = getIntent().getStringExtra("description");
-            saImg = getIntent().getIntExtra("image", 1);
+            saDesc  = getIntent().getStringExtra("description");
+            saImg   = getIntent().getByteArrayExtra("image");
         } else {
             Toast.makeText(this, "No data", Toast.LENGTH_SHORT).show();
         }
@@ -49,7 +50,11 @@ public class SecondActivity extends AppCompatActivity {
     private void setData() {
         saTVtitle.setText(saTitle);
         saTVdesc.setText(saDesc);
-        saIVimg.setImageResource(saImg);
+        try {
+            saIVimg.setImageBitmap(BitmapFactory.decodeByteArray(saImg, 0, saImg.length));
+        } catch(NullPointerException exception) {
+            saIVimg.setImageResource(R.drawable.beer_icon2);
+        }
         label = saTitle + " Details";
     }
 }

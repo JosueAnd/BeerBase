@@ -166,13 +166,22 @@ class BeerBase {
                 exception.printStackTrace();
                 System.out.println(exception.getMessage());
                 results = null;
-            } finally {
-                database.close();
             }
         }
 
         return results;
 
+    }
+
+    static boolean closeDatabase(SQLiteDatabase database) {
+        try {
+            database.close();
+            return true;
+        } catch(Exception exception) {
+            exception.printStackTrace();
+            System.out.println(exception.getMessage());
+            return false;
+        }
     }
 
 } // end class BeerBase
