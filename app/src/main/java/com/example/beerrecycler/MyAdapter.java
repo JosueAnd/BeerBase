@@ -18,17 +18,14 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
-    String[] data1, data2;
-    int[] images;
-
-    Context context;
-    List<Beer> beers;
-    byte[] currentImg = null;
-    Bitmap imgBitmap = null;
+    private Context     context;
+    private List<Beer>  beers;
+    private byte[]      currentImg;
+    private Bitmap      imgBitmap = null;
 
     MyAdapter(Context context, List<Beer> beers) {
-        this.context = context;
-        this.beers = beers;
+        this.context    = context;
+        this.beers      = beers;
     }
 
     @NonNull
@@ -41,16 +38,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-        currentImg = beers.get(position).getImage();
-        if(currentImg != null) {
-            imgBitmap = BitmapFactory.decodeByteArray(currentImg, 0, currentImg.length);
-        }
 
         holder.title.setText(beers.get(position).getName());
-        if(imgBitmap != null) {
-            holder.myImage.setImageBitmap(imgBitmap);
-        } else {
+
+        if(beers.get(position).getImage() == null) {
+            currentImg = null;
             holder.myImage.setImageResource(R.drawable.beer_icon2);
+        } else {
+            currentImg = beers.get(position).getImage();
+            imgBitmap = BitmapFactory.decodeByteArray(currentImg, 0, currentImg.length);
+            holder.myImage.setImageBitmap(imgBitmap);
         }
 
         holder.rowLayout.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +56,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 Intent intent = new Intent(context, SecondActivity.class);
                 intent.putExtra("title", beers.get(position).getName());
                 intent.putExtra("description", beers.get(position).getDescription());
+                intent.putExtra("brewery", beers.get(position).getBrewery());
                 if(currentImg != null) {
                     intent.putExtra("image", beers.get(position).getImage());
                 } else {
@@ -74,13 +72,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return this.beers.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView title;
         ImageView myImage;
         ConstraintLayout rowLayout;
 
-        public MyViewHolder(@NonNull View itemView) {
+        MyViewHolder(@NonNull View itemView) {
             super(itemView);
             this.title = itemView.findViewById(R.id.beerText);
             this.myImage = itemView.findViewById(R.id.myImageView);

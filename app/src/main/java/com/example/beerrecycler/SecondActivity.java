@@ -10,21 +10,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SecondActivity extends AppCompatActivity {
 
-    TextView saTVtitle,
-             saTVdesc;
-    ImageView saIVimg;
-
-    String saTitle, saDesc, label;
-    byte[] saImg;
+    TextView    saTVtitle,
+                saTVdesc,
+                saTVbrewery;
+    ImageView   saIVimg;
+    String      saTitle,
+                saDesc,
+                saBrewery,
+                label;
+    byte[]      saImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        saTVtitle = findViewById(R.id.saTVtitle);
-        saTVdesc = findViewById(R.id.saTVdesc);
-        saIVimg = findViewById(R.id.saIVimg);
+        saTVtitle   = findViewById(R.id.saTVtitle);
+        saTVdesc    = findViewById(R.id.saTVdesc);
+//        saTVbrewery = findViewById();
+        saIVimg     = findViewById(R.id.saIVimg);
 
         getData();
         setData();
@@ -35,13 +39,15 @@ public class SecondActivity extends AppCompatActivity {
 
     private void getData() {
         if(
-                getIntent().hasExtra("title") &&
+                getIntent().hasExtra("title")       &&
                 getIntent().hasExtra("description") &&
-                getIntent().hasExtra("image")
+                getIntent().hasExtra("image")       &&
+                getIntent().hasExtra("brewery")
         ) {
-            saTitle = getIntent().getStringExtra("title");
-            saDesc  = getIntent().getStringExtra("description");
-            saImg   = getIntent().getByteArrayExtra("image");
+            saTitle     = getIntent().getStringExtra("title");
+            saDesc      = getIntent().getStringExtra("description");
+            saBrewery   = R.string.brewery_title + getIntent().getStringExtra("brewery");
+            saImg       = getIntent().getByteArrayExtra("image");
         } else {
             Toast.makeText(this, "No data", Toast.LENGTH_SHORT).show();
         }
@@ -50,6 +56,7 @@ public class SecondActivity extends AppCompatActivity {
     private void setData() {
         saTVtitle.setText(saTitle);
         saTVdesc.setText(saDesc);
+        saTVbrewery.setText(saBrewery);
         try {
             saIVimg.setImageBitmap(BitmapFactory.decodeByteArray(saImg, 0, saImg.length));
         } catch(NullPointerException exception) {

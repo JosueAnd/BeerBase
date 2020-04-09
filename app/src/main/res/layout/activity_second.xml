@@ -17,7 +17,7 @@
         android:contentDescription="@string/picture_of_beer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ada" />
+        app:srcCompat="@drawable/beer_icon2" />
 
     <TextView
         android:id="@+id/saTVtitle"
@@ -40,10 +40,22 @@
         android:id="@+id/saTVdesc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="@string/description"
+        android:textColor="#BFFFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/saIVimg"
+        app:layout_constraintTop_toBottomOf="@+id/saIVimg" />
+
+    <TextView
+        android:id="@+id/saTVbrewery"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/brewery"
         android:textColor="#BFFFFFFF"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
