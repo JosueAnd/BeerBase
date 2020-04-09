@@ -14,14 +14,17 @@ public class SecondActivity extends AppCompatActivity {
                 saTVdesc,
                 saTVbrewery,
                 saTVcategory,
-                saTVstyle;
+                saTVstyle,
+                saTVabv;
     ImageView   saIVimg;
     String      saTitle,
                 saDesc,
                 saBrewery,
                 saCategory,
                 saStyle,
+                saAbv,
                 label;
+    Double      Abv;
     byte[]      saImg;
 
     @Override
@@ -34,6 +37,7 @@ public class SecondActivity extends AppCompatActivity {
         saTVbrewery     = findViewById(R.id.saTVbrewery);
         saTVcategory    = findViewById(R.id.saTVcategory);
         saTVstyle       = findViewById(R.id.saTVstyle);
+        saTVabv         = findViewById(R.id.saTVabv);
         saIVimg         = findViewById(R.id.saIVimg);
 
         getData();
@@ -50,13 +54,16 @@ public class SecondActivity extends AppCompatActivity {
                 getIntent().hasExtra("image")       &&
                 getIntent().hasExtra("brewery")     &&
                 getIntent().hasExtra("category")    &&
-                getIntent().hasExtra("style")
+                getIntent().hasExtra("style")       &&
+                getIntent().hasExtra("abv")
         ) {
             saTitle     = getIntent().getStringExtra("title");
             saDesc      = getIntent().getStringExtra("description");
             saBrewery   = getIntent().getStringExtra("brewery");
             saCategory  = getIntent().getStringExtra("category");
             saStyle     = getIntent().getStringExtra("style");
+            Abv         = getIntent().getDoubleExtra("abv", 0);
+            saAbv       = Abv.toString() + " %";
             saImg       = getIntent().getByteArrayExtra("image");
         } else {
             Toast.makeText(this, "No data", Toast.LENGTH_SHORT).show();
@@ -69,6 +76,7 @@ public class SecondActivity extends AppCompatActivity {
         saTVbrewery.setText(saBrewery);
         saTVcategory.setText(saCategory);
         saTVstyle.setText(saStyle);
+        saTVabv.setText(saAbv);
         try {
             saIVimg.setImageBitmap(BitmapFactory.decodeByteArray(saImg, 0, saImg.length));
         } catch(NullPointerException exception) {

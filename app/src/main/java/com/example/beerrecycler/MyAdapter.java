@@ -59,6 +59,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 intent.putExtra("brewery", beers.get(position).getBrewery());
                 intent.putExtra("category", beers.get(position).getCategory());
                 intent.putExtra("style", beers.get(position).getStyle());
+                intent.putExtra("abv", beers.get(position).getAbv());
                 if(currentImg != null) {
                     intent.putExtra("image", beers.get(position).getImage());
                 } else {
