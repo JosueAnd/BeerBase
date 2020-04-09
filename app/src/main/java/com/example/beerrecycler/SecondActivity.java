@@ -12,11 +12,15 @@ public class SecondActivity extends AppCompatActivity {
 
     TextView    saTVtitle,
                 saTVdesc,
-                saTVbrewery;
+                saTVbrewery,
+                saTVcategory,
+                saTVstyle;
     ImageView   saIVimg;
     String      saTitle,
                 saDesc,
                 saBrewery,
+                saCategory,
+                saStyle,
                 label;
     byte[]      saImg;
 
@@ -25,10 +29,12 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        saTVtitle   = findViewById(R.id.saTVtitle);
-        saTVdesc    = findViewById(R.id.saTVdesc);
-//        saTVbrewery = findViewById();
-        saIVimg     = findViewById(R.id.saIVimg);
+        saTVtitle       = findViewById(R.id.saTVtitle);
+        saTVdesc        = findViewById(R.id.saTVdesc);
+        saTVbrewery     = findViewById(R.id.saTVbrewery);
+        saTVcategory    = findViewById(R.id.saTVcategory);
+        saTVstyle       = findViewById(R.id.saTVstyle);
+        saIVimg         = findViewById(R.id.saIVimg);
 
         getData();
         setData();
@@ -42,11 +48,15 @@ public class SecondActivity extends AppCompatActivity {
                 getIntent().hasExtra("title")       &&
                 getIntent().hasExtra("description") &&
                 getIntent().hasExtra("image")       &&
-                getIntent().hasExtra("brewery")
+                getIntent().hasExtra("brewery")     &&
+                getIntent().hasExtra("category")    &&
+                getIntent().hasExtra("style")
         ) {
             saTitle     = getIntent().getStringExtra("title");
             saDesc      = getIntent().getStringExtra("description");
-            saBrewery   = R.string.brewery_title + getIntent().getStringExtra("brewery");
+            saBrewery   = getIntent().getStringExtra("brewery");
+            saCategory  = getIntent().getStringExtra("category");
+            saStyle     = getIntent().getStringExtra("style");
             saImg       = getIntent().getByteArrayExtra("image");
         } else {
             Toast.makeText(this, "No data", Toast.LENGTH_SHORT).show();
@@ -57,6 +67,8 @@ public class SecondActivity extends AppCompatActivity {
         saTVtitle.setText(saTitle);
         saTVdesc.setText(saDesc);
         saTVbrewery.setText(saBrewery);
+        saTVcategory.setText(saCategory);
+        saTVstyle.setText(saStyle);
         try {
             saIVimg.setImageBitmap(BitmapFactory.decodeByteArray(saImg, 0, saImg.length));
         } catch(NullPointerException exception) {

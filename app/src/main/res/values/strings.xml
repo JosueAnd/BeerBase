@@ -4,7 +4,14 @@
     <string name="picture_of_beer">Picture of Beer</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
-    <string name="detail_view">Beer Details</string>
+    <string name="description_title">Description:</string>
     <string name="brewery">Brewery</string>
-    <string name="brewery_title">Brewery: </string>
+    <string name="brewery_title">Brewery:</string>
+    <string name="category">Category</string>
+    <string name="category_title">Category:</string>
+    <string name="style">Style</string>
+    <string name="style_title">Style:</string>
+    <string name="abv">ABV</string>
+    <string name="abv_title">ABV:</string>
+    <string name="detail_view">Beer Details</string>
 </resources>
