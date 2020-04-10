@@ -1,7 +1,4 @@
 ![BeerBase Icon](https://i.ibb.co/jVwv7PD/beer-icon.png)
 #	BeerBase
-A beer database application for the Android platform.
-###	Objectives:
-- [x] Scrollable, alphabetic list of Beers.
-  - [x] List displays a photo of the beer if available.
-  - [x] List displays the names of the beers next to their photo.
+### Java & SQLite
+BeerBase is an application for the Android platform that shows basic information for a large number of hops based beverages. It utilizes a sample database of approximately 2,000 beverages I put together in SQLite Studio and allows the user to search for a specific beer by name or a list of beverages provided by a specific brewery.
