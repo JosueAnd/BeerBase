@@ -39,7 +39,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> impl
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
                 for(Beer beer : copy) {
-                    if(beer.getName().toLowerCase().contains(filterPattern)) {
+                    if(beer.getName().toLowerCase().contains(filterPattern) ||
+                       beer.getBrewery().toLowerCase().contains(filterPattern)) {
                         filteredList.add(beer);
                     }
                 }
