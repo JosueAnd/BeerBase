@@ -80,7 +80,7 @@ public class SecondActivity extends AppCompatActivity {
         try {
             saIVimg.setImageBitmap(BitmapFactory.decodeByteArray(saImg, 0, saImg.length));
         } catch(NullPointerException exception) {
-            saIVimg.setImageResource(R.drawable.beer_icon2);
+            saIVimg.setImageResource(R.drawable.beericon2);
         }
         label = saTitle + " Details";
     }

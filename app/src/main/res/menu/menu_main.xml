@@ -5,7 +5,7 @@
 <!--    tools:context="com.example.beerrecycler.MainActivity">-->
     <item
         android:id="@+id/action_search"
-        android:icon="@drawable/beer_icon2"
+        android:icon="@drawable/beericon2"
         android:title="@string/action_search"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="ifRoom" />

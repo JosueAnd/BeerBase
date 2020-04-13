@@ -81,7 +81,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> impl
 
         if(original.get(position).getImage() == null) {
             currentImg = null;
-            holder.myImage.setImageResource(R.drawable.beer_icon2);
+            holder.myImage.setImageResource(R.drawable.beericon2);
         } else {
             currentImg = original.get(position).getImage();
             imgBitmap = BitmapFactory.decodeByteArray(currentImg, 0, currentImg.length);
@@ -101,7 +101,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> impl
                 if(currentImg != null) {
                     intent.putExtra("image", original.get(position).getImage());
                 } else {
-                    intent.putExtra("image", R.drawable.beer_icon2);
+                    intent.putExtra("image", R.drawable.beericon2);
                 }
                 context.startActivity(intent);
             }

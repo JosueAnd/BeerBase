@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#334D5C"
+    android:background="@color/colorPrimary"
     tools:context=".SecondActivity">
 
     <TextView
@@ -32,7 +32,7 @@
         android:contentDescription="@string/picture_of_beer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/beer_icon2" />
+        app:srcCompat="@drawable/beericon2" />
 
     <TextView
         android:id="@+id/saTVtitle"
