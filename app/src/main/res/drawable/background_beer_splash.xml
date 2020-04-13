@@ -2,10 +2,10 @@
 <layer-list
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:drawable="@color/colorPrimary"/>
+    <item android:drawable="@color/colorSplash"/>
 
     <item>
-        <bitmap android:src="@drawable/beer_icon2"
+        <bitmap android:src="@drawable/beerbase2"
                 android:gravity="center"/>
     </item>
 

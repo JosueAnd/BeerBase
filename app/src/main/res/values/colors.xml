@@ -4,6 +4,7 @@
     <color name="colorPrimary">#008577</color>
     -->
     <color name="colorPrimary">#334D5C</color>
+    <color name="colorSplash">#0080FF</color>
     <!-- Original notification bar color, replaced to match rest of theme.
     <color name="colorPrimaryDark">#00574B</color>
     -->
