@@ -11,4 +11,6 @@
     -->
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="darkPretzel">#C3996F</color>
+    <color name="lightPretzel">#FFFAE6</color>
 </resources>
